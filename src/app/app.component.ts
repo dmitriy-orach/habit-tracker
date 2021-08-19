@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Habit } from './components/Habit/habit';
+import { Habit } from './models/habit';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent {
 
   public adding = false
   public editing = false;
-  public  editingIndex: number;
+  public editingIndex: number;
 
   public habitForm = new FormGroup({
     name: new FormControl(''),
@@ -21,13 +21,13 @@ export class AppComponent {
   })
 
   public habits: Habit[] = [
-    <Habit>{
+    {
       name: '15 Minute Walk',
       frequency: 'Daily',
       description:
         'This habit makes my kitchen look nice and makes my day better the next morning.',
     },
-    <Habit>{
+    {
       name: 'Weed the Garden',
       frequency: 'Weekly',
       description:
@@ -36,7 +36,7 @@ export class AppComponent {
   ]
 
   public onSubmit() {
-    const habit = this.habitForm.value as Habit;
+    const habit: Habit = this.habitForm.value;
 
     if(this.editing) {
       this.habits.splice(this.editingIndex, 1, habit);

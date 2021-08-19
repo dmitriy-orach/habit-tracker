@@ -1,4 +1,4 @@
-export class Habit {
+export interface Habit {
     name: string;
     frequency: string;
     description: string;
